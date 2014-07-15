@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PokerHand\PokerHand.Models.csproj">
+    <ProjectReference Include="..\Models\PokerHand.Models.csproj">
       <Project>{291681b8-8e39-4caf-b089-849da5e65cb0}</Project>
       <Name>PokerHand.Models</Name>
     </ProjectReference>

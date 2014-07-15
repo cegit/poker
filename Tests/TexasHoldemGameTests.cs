@@ -66,6 +66,5 @@ namespace PokerHand.Tests
                     Assert.IsTrue(winning[h].Kind >= winning[h + 1].Kind);
             }
         }
-
     }
 }
