@@ -55,23 +55,43 @@ namespace PokerHand.Tests
         public void CheckForATie()
         {
             var poker = new PokerGame();
-            var hands = new List<IHand> { poker.Deal("2H 3D 5S 9C KD"), poker.Deal("2C 3H 5C 9H KC") };
+            var hands = new List<IHand> { poker.Deal("2H 3D 5S 9C KD"), 
+                poker.Deal("2C 3H 5C 9H KC") };
             var winners = poker.GetWinners(hands).ToList();
 
             Assert.AreEqual(winners.Count, 2);
         }
 
         [Test]
-        [TestCase(0, HandType.ThreeOfAKind, "3H, 3C, 3S,AH, JD", "AC, AD, KS, KC, 3D", "4H,5D,7C,JS,QH" )]
-        [TestCase(2, HandType.Straight, "[3H, 2C, 3S, AH, JD]", "[AC, AD, KS, KC, 3D]", "4H,5D,6H,7C,8H")]
-        public void DetermineWinningHand(int winner, HandType winningHand, params string[] handVals)
+        public void CheckForAThreeWayTie()
         {
             var poker = new PokerGame();
+            var hands = new List<IHand> { 
+                poker.Deal("2H 3H 4H 5H 6H"), 
+                poker.Deal("2D 3D 4D 5D 6D"),
+                poker.Deal("2S 3S 4S 5S 6S"),
+            };
+            var winners = poker.GetWinners(hands).ToList();
 
+            Assert.AreEqual(winners.Count, 3);
+        }
+
+        [Test]
+        [TestCase(0, HandType.ThreeOfAKind, "3H, 3C, 3S,AH, JD", "AC, AD, KS, KC, 3D", "4H,5D,7C,JS,QH" )]
+        [TestCase(2, HandType.Straight, "[3H, 2C, 3S, AH, JD]", "[AC, AD, KS, KC, 3D]", "4H, 5D, 6H, 7C, 8H")]
+        [TestCase(1, HandType.StraightFlush, "[2H 3H 4H 5H QH]", "[2D 3D 4D 5D AD]", "2S 3S 4S 5S KS")]
+        public void DetermineWinningHand(int win, HandType winningHand, params string[] handVals)
+        {
+            //ASSIGN
+            var poker = new PokerGame();
+
+            //ACT
             var hands = handVals.Select(poker.Deal).ToList();
-            var winning = hands.OrderByDescending(h => h).ToList();
-            Assert.That(winning[0].Kind, Is.EqualTo(winningHand));
-            Assert.That(winning[0], Is.EqualTo(hands[winner]));
+            var winner = poker.GetWinners(hands).Single();
+
+            //ASSERT
+            Assert.That(winner.Kind, Is.EqualTo(winningHand));
+            Assert.That(winner, Is.EqualTo(hands[win]));
         }
 
         [Test]
@@ -102,7 +122,7 @@ namespace PokerHand.Tests
                 {
                     poker.Deal(), poker.Deal(), poker.Deal(), poker.Deal(), poker.Deal(), poker.Deal()
                 };
-                var winning = hands.OrderByDescending(h => h).ToList();
+                var winning = poker.GetWinners(hands).ToList();
 
                 for (var h = 0; h < winning.Count - 1; h++)
                     Assert.IsTrue(winning[h].Kind >= winning[h + 1].Kind);

@@ -12,11 +12,9 @@ namespace PokerHand.Models
 
     public class Hand : IHand
     {
-       
-
-        public Hand(IList<Card> cards)
+        public Hand(IEnumerable<Card> cards)
         {
-            Cards = cards;
+            Cards = cards.OrderByDescending(c=>c.CardValue).ToList();
         }
         public Hand(params Card[] cards):this(cards.ToList()) { }
 
@@ -28,7 +26,8 @@ namespace PokerHand.Models
             get { return _kind; }
             set
             {
-                if (_kind == HandType.Straight && value == HandType.Flush)
+                if (_kind == HandType.Straight && value == HandType.Flush ||
+                    _kind == HandType.Flush && value == HandType.Straight)
                     _kind = Cards.First().IsAnAce ? HandType.RoyalFlush : HandType.StraightFlush;
                 
                 else if (value > _kind) 

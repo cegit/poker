@@ -54,9 +54,10 @@
     <Compile Include="DeckTests.cs" />
     <Compile Include="PokerGameTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TexasHoldemGameTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PokerHand\PokerHand.Models.csproj">
+    <ProjectReference Include="..\Models\PokerHand.Models.csproj">
       <Project>{291681b8-8e39-4caf-b089-849da5e65cb0}</Project>
       <Name>PokerHand.Models</Name>
     </ProjectReference>
