@@ -26,22 +26,17 @@ namespace PokerHand.Models
         public abstract IHand Deal(string selectedCards = "");
         public  int CardsInHand { get; protected set; }
 
-        public IEnumerable<IHand> GetWinners(IEnumerable<IHand> hands)
+        public IGameResult GetWinners(IEnumerable<IHand> hands)
         {
-            IHand prev = null;
+            var winners = new List<IHand>();   
             foreach (var hand in hands.OrderByDescending(h => h))
             {
-                if (prev == null)
-                {
-                    prev = hand;
-                    yield return hand;
-                }
-                else if (hand.Equals(prev))
-                    yield return hand;
-
+                if (!winners.Any() || winners.First().Equals(hand))
+                    winners.Add(hand);
                 else
                     break;
             }
+            return new GameResult(winners);
         }
     }
 }

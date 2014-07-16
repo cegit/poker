@@ -44,6 +44,7 @@
     <Compile Include="CardGame.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="GameResult.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="PokerGame.cs" />
     <Compile Include="ICardGame.cs" />

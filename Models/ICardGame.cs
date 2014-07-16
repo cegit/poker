@@ -7,6 +7,6 @@ namespace PokerHand.Models
 
         IHand Deal( string selectedCards="");
         int CardsInHand { get; }
-        IEnumerable<IHand> GetWinners(IEnumerable<IHand> hands);
+        IGameResult GetWinners(IEnumerable<IHand> hands);
     }
 }

@@ -34,7 +34,7 @@ namespace PokerHand.Models
                 temp.Add(hand);
             }
 
-            var found = GetWinners(temp).Cast<Hand>().FirstOrDefault();
+            var found = GetWinners(temp).Winners.Cast<Hand>().FirstOrDefault();
             if (found == null) return false;
             _possibilities.Add(found);
             return true;
@@ -96,7 +96,7 @@ namespace PokerHand.Models
                 }
             }
 
-            return GetWinners(_possibilities).First();
+            return GetWinners(_possibilities).Winners.First();
         }
     }
 }

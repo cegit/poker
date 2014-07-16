@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using PokerHand.Models;
 
-namespace PokerHand.Tests
+namespace PokerHand.Models.Tests
 {
     [TestFixture]
     public class TexasHoldemGameTests
@@ -19,12 +18,13 @@ namespace PokerHand.Tests
 
             //ACT
             var hands = handVals.Select(texas.Deal).ToList();
-            var winner = texas.GetWinners(hands).Single();
+            var result = texas.GetWinners(hands);
 
 
             //ASSERT
-            Assert.That(winner.Kind, Is.EqualTo(winningHand));
-            Assert.That(winner, Is.EqualTo(hands[win]));
+            Assert.That(result.IsATie, Is.Not.True);
+            Assert.That(result.Winner.Kind, Is.EqualTo(winningHand));
+            Assert.That(result.Winner, Is.EqualTo(hands[win]));
         }
 
         [Test]
@@ -60,10 +60,19 @@ namespace PokerHand.Tests
                 {
                     texas.Deal(), texas.Deal(), texas.Deal(), texas.Deal(), texas.Deal(), texas.Deal()
                 };
-                var winning = texas.GetWinners(hands).ToList();
+                var result = texas.GetWinners(hands);
 
-                for (var h = 0; h < winning.Count - 1; h++)
-                    Assert.IsTrue(winning[h].Kind >= winning[h + 1].Kind);
+                if (!result.IsATie)
+                {
+                    var winner = result.Winner;
+                    Assert.That(winner, Is.Not.Null);
+                    foreach (var hand in hands)
+                    {
+                        Assert.That(winner, Is.GreaterThanOrEqualTo(hand)); 
+                    }
+                }
+                for (var h = 0; h < result.Winners.Count - 1; h++)
+                    Assert.IsTrue(result.Winners[h].Kind >= result.Winners[h + 1].Kind);
             }
         }
     }

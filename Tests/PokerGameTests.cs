@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 
-namespace PokerHand.Tests
+namespace PokerHand.Models.Tests
 {
-    using NUnit.Framework;
-    using Models;
-
     [TestFixture]
     public class PokerGameTests
     {
@@ -41,14 +39,13 @@ namespace PokerHand.Tests
         {
             var poker = new PokerGame();
             var hands = new List<IHand> {poker.Deal(black), poker.Deal(white)};
-            var winners = poker.GetWinners(hands).ToList();
+            var result = poker.GetWinners(hands);
 
-            var isTie = winners.Count != 1;
-            var didBlackWin = !isTie && winners[0].Equals(hands[0]);
+            var didBlackWin = hands[0].Equals(result.Winner);
 
-            Assert.IsFalse(isTie);
+            Assert.IsFalse(result.IsATie);
             Assert.AreEqual(blackWins, didBlackWin);
-            Assert.AreEqual(handMessage, winners[0].ToString());
+            Assert.IsTrue(result.Winner.ToString().Contains(handMessage));
         }
 
         [Test]
@@ -57,9 +54,9 @@ namespace PokerHand.Tests
             var poker = new PokerGame();
             var hands = new List<IHand> { poker.Deal("2H 3D 5S 9C KD"), 
                 poker.Deal("2C 3H 5C 9H KC") };
-            var winners = poker.GetWinners(hands).ToList();
+            var result = poker.GetWinners(hands);
 
-            Assert.AreEqual(winners.Count, 2);
+            Assert.IsTrue(result.IsATie);
         }
 
         [Test]
@@ -71,9 +68,10 @@ namespace PokerHand.Tests
                 poker.Deal("2D 3D 4D 5D 6D"),
                 poker.Deal("2S 3S 4S 5S 6S"),
             };
-            var winners = poker.GetWinners(hands).ToList();
+            var result = poker.GetWinners(hands);
 
-            Assert.AreEqual(winners.Count, 3);
+            Assert.IsTrue(result.IsATie);
+            Assert.AreEqual(result.Winners.Count, 3);
         }
 
         [Test]
@@ -87,11 +85,11 @@ namespace PokerHand.Tests
 
             //ACT
             var hands = handVals.Select(poker.Deal).ToList();
-            var winner = poker.GetWinners(hands).Single();
+            var result = poker.GetWinners(hands);
 
             //ASSERT
-            Assert.That(winner.Kind, Is.EqualTo(winningHand));
-            Assert.That(winner, Is.EqualTo(hands[win]));
+            Assert.That(result.Winner.Kind, Is.EqualTo(winningHand));
+            Assert.That(result.Winner, Is.EqualTo(hands[win]));
         }
 
         [Test]
@@ -122,10 +120,20 @@ namespace PokerHand.Tests
                 {
                     poker.Deal(), poker.Deal(), poker.Deal(), poker.Deal(), poker.Deal(), poker.Deal()
                 };
-                var winning = poker.GetWinners(hands).ToList();
 
-                for (var h = 0; h < winning.Count - 1; h++)
-                    Assert.IsTrue(winning[h].Kind >= winning[h + 1].Kind);
+                var result = poker.GetWinners(hands);
+
+                if (!result.IsATie)
+                {
+                    var winner = result.Winner;
+                    Assert.That(winner, Is.Not.Null);
+                    foreach (var hand in hands)
+                    {
+                        Assert.That(winner, Is.GreaterThanOrEqualTo(hand));
+                    }
+                }
+                for (var h = 0; h < result.Winners.Count - 1; h++)
+                    Assert.IsTrue(result.Winners[h].Kind >= result.Winners[h + 1].Kind);
             }
         }
     }

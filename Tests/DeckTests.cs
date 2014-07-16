@@ -1,9 +1,8 @@
-﻿namespace PokerHand.Tests
-{
-    using System.Linq;
-    using NUnit.Framework;
-    using Models;
+﻿using System.Linq;
+using NUnit.Framework;
 
+namespace PokerHand.Models.Tests
+{
     [TestFixture]
     public class DeckTests
     {

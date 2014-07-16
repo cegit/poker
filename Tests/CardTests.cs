@@ -1,11 +1,9 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 
-namespace PokerHand.Tests
+namespace PokerHand.Models.Tests
 {
-    using System.Linq;
-    using Models;
-
     [TestFixture]
     public class CardTests
     {
