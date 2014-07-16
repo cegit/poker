@@ -38,9 +38,30 @@ namespace PokerHand.Models
             return delt;
         }
 
-        public void Shuffle()
+		public Deck RevertWildCard()
+		{
+			LoadCards();
+			return this;
+		}
+		public Deck MakeCardWild(Face wild) 
+		{
+			if (Cards.Count != 52) LoadCards();
+			for(var i=0; i< 52; i++)
+			{
+				var current = Cards [i];
+
+				if (current.IsWild == false && current.Face == wild)
+					Cards [i] = new Card (current.Face, current.Suit, true);
+
+				else if (current.IsWild && current.Face != wild)
+					Cards [i] = new Card (current.Face, current.Suit, false);
+			}
+			return this;
+		}
+
+		public Deck Shuffle()
         {
-            if (Cards.Count != 52) LoadCards();
+			if (Cards.Count != 52) LoadCards();
 
             for (var n = Cards.Count - 1; n > 0; --n)
             {
@@ -49,14 +70,15 @@ namespace PokerHand.Models
                 Cards[n] = Cards[k];
                 Cards[k] = temp;
             }
+			return this;
         }
         
-        private void LoadCards()
-        {
-            Cards = new List<Card>();
-            foreach (var suit in Enum.GetValues(typeof(Suit)).Cast<Suit>())
-                foreach (var face in Enum.GetValues(typeof(Face)).Cast<Face>())
-                    Cards.Add(new Card(face, suit));
-        }
+		private void LoadCards()
+		{
+			Cards = new List<Card> ();
+			foreach (var face in Enum.GetValues(typeof(Face)).Cast<Face>())
+				foreach (var suit in Enum.GetValues(typeof(Suit)).Cast<Suit>())
+					Cards.Add (new Card (face, suit, false));
+		}
     }
 }

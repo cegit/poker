@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
+using PokerHand.Console;
 
-namespace PokerHand.Console.Tests
+namespace PokerHand.Tests.Console
 {
 	[TestFixture]
     public class ArgumentHandlerTests

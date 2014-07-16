@@ -95,6 +95,22 @@ namespace PokerHand.Models
             return 0;
         }
 
+		#region Equals
+		public override int GetHashCode ()
+		{
+			unchecked 
+			{
+				int hash = 7;
+				if (Cards != null) {
+					hash = (hash * 17) + Cards.Count;
+					foreach (var card in Cards) {
+						hash *= 17;
+						hash = hash + card.GetHashCode();
+					}
+				}
+				return hash;
+			}
+		}
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -110,10 +126,10 @@ namespace PokerHand.Models
         {
             return Equals(left, right);
         }
-
         public static bool operator !=(Hand left, Hand right)
         {
             return !Equals(left, right);
         }
+		#endregion
     }
 }

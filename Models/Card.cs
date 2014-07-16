@@ -5,13 +5,14 @@ namespace PokerHand.Models
 {
     public class Card : IComparable<Card>
     {
-        private readonly int _equalityValue;
+		protected readonly int _equalityValue;
 
-        public Card(Face face, Suit suit) 
+		public Card(Face face, Suit suit, bool isWild=false) 
         {
             Face = face;
             Suit = suit;
             _equalityValue = (int)Face * (int)Suit;
+			IsWild = isWild;
         }
 
         public Card(string val)
@@ -22,10 +23,13 @@ namespace PokerHand.Models
             _equalityValue = (int)Face * (int)Suit;
         }
 
-        public Suit Suit { get; private set; }
         public Face Face { get; private set; }
+		public Suit Suit { get; private set; }
+
         public int CardValue { get { return (int)Face; } }
+
         public bool IsAnAce { get { return Face == Face.Ace; } }
+		public bool IsWild { get; private set;}
 
         public override string ToString()
         {

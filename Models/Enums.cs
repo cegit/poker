@@ -49,6 +49,7 @@ namespace PokerHand.Models
         [Description("Full House")] FullHouse,
         [Description("Four Of A Kind")] FourOfAKind,
         [Description("Straight Flush")] StraightFlush,
-        [Description("Royal Flush")] RoyalFlush
+        [Description("Royal Flush")] RoyalFlush,
+		[Description("Five Of A Kind")] FiveOfAKind  // only possible with wild cards
     }
 }

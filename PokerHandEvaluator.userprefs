@@ -1,6 +1,39 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="PokerHand.Tests" expanded="True">
+            <Node name="PokerHand" expanded="True">
+              <Node name="Tests" expanded="True">
+                <Node name="Console" expanded="True">
+                  <Node name="ArgumentHandlerTests" expanded="True" />
+                </Node>
+                <Node name="Models" expanded="True">
+                  <Node name="CardTests" expanded="True">
+                    <Node name="InvalidStringShouldThrowException" expanded="True" />
+                  </Node>
+                  <Node name="DeckTests" expanded="True">
+                    <Node name="DeckCanRevertWildCards" selected="True" />
+                  </Node>
+                  <Node name="PokerGameTests" expanded="True">
+                    <Node name="DetermineWinningHand" expanded="True" />
+                    <Node name="JaimeTests" expanded="True" />
+                    <Node name="TestKind" expanded="True" />
+                  </Node>
+                  <Node name="TexasHoldemGameTests" expanded="True">
+                    <Node name="DetermineWinningHand" expanded="True" />
+                    <Node name="TestKind" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using NUnit.Framework;
+using PokerHand.Models;
 
-namespace PokerHand.Models.Tests
+namespace PokerHand.Tests.Models
 {
     [TestFixture]
     public class DeckTests
@@ -29,6 +30,28 @@ namespace PokerHand.Models.Tests
             var distinctList = deck.Cards.Distinct().ToList();
             Assert.IsTrue(distinctList.SequenceEqual(deck.Cards));
         }
+
+		[Test]
+		public void DeckCanHaveWildCards()
+		{
+			var deck = new Deck ();
+			var anyWildCards = deck.Cards.Any (c => c.IsWild);
+
+			deck.MakeCardWild(Face.Two).Shuffle();
+
+			Assert.IsFalse (anyWildCards);
+			Assert.That (deck.Cards.Count (c => c.IsWild), Is.EqualTo (4));
+		}
+
+		[Test]
+		public void DeckCanRevertWildCards()
+		{
+			var deck = new Deck ().MakeCardWild (Face.Ace);
+			Assert.That (deck.Cards.Count (c => c.IsWild), Is.EqualTo (4));
+
+			deck.RevertWildCard();
+			Assert.That (deck.Cards.Count (c => c.IsWild), Is.EqualTo (0));
+		}
 
         [Test]
         public void DeckShouldBeRandomizedAfterShuffle()
