@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace PokerHand.Console.Tests
 {
-    [TestClass]
+	[TestFixture]
     public class ArgumentHandlerTests
     {
-        [TestMethod]
+		[Test]
         public void TestHandlingArguments()
         {
             var argHandler = new ArgumentHandler();

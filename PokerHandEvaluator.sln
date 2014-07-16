@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 2012
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokerHand.Models.Tests", "Tests\PokerHand.Models.Tests.csproj", "{11BD84FB-7072-4332-92BF-D3F9903D918E}"
@@ -26,20 +26,21 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{11BD84FB-7072-4332-92BF-D3F9903D918E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11BD84FB-7072-4332-92BF-D3F9903D918E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11BD84FB-7072-4332-92BF-D3F9903D918E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11BD84FB-7072-4332-92BF-D3F9903D918E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{291681B8-8E39-4CAF-B089-849DA5E65CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{291681B8-8E39-4CAF-B089-849DA5E65CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{291681B8-8E39-4CAF-B089-849DA5E65CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{291681B8-8E39-4CAF-B089-849DA5E65CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CF5BD2-6369-4738-89A3-BB48FEE15272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CF5BD2-6369-4738-89A3-BB48FEE15272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C249F790-09F1-4314-A270-13236C14D76B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C249F790-09F1-4314-A270-13236C14D76B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C249F790-09F1-4314-A270-13236C14D76B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C249F790-09F1-4314-A270-13236C14D76B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77CF5BD2-6369-4738-89A3-BB48FEE15272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77CF5BD2-6369-4738-89A3-BB48FEE15272}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77CF5BD2-6369-4738-89A3-BB48FEE15272}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77CF5BD2-6369-4738-89A3-BB48FEE15272}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Console\PokerHand.Console.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
