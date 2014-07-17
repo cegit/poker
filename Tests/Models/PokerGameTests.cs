@@ -60,6 +60,35 @@ namespace PokerHand.Tests.Models
             Assert.IsTrue(result.IsATie);
         }
 
+		[Test]
+		[TestCase(false, true, HandType.HighCard, "2H 3D 5S 9C KD", "2C 3H 4S 8C AH")]
+		[TestCase(true, false, HandType.FullHouse, "2H 4S 4C 2D 4H", "2S 8S AS QS 3S")]
+		[TestCase(true, false, HandType.HighCard, "2H 3D 5S 9C KD", "2C 3H 4S 8C KH")]
+		[TestCase(true, true, HandType.HighCard, "[2H 3D 5S 9C KD]", "[2D 3H 5C 9S KH]")]
+		public void CyberDojoTests(bool blackWins, bool whiteWins, HandType winningHand, string blackHand, string whiteHand)
+		{
+			//ASSIGN
+			var poker = new PokerGame();
+
+			//ACT
+			var black = poker.Deal (blackHand);
+			var white = poker.Deal (whiteHand);
+
+			var result = poker.GetWinners (new [] { black, white });
+
+			//ASSERT
+			if (blackWins && whiteWins) {
+				Assert.IsTrue (result.IsATie);
+				Assert.AreEqual (winningHand, result.Winners.First().Kind);
+
+			} else {
+				Assert.IsFalse (result.IsATie);
+				Assert.AreEqual (winningHand, result.Winner.Kind);
+				Assert.AreEqual (black == result.Winner, blackWins);
+				Assert.AreEqual (white == result.Winner, whiteWins);
+			}
+		}
+
         [Test]
         public void CheckForAThreeWayTie()
         {

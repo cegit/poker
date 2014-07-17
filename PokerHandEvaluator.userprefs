@@ -1,9 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/ArgumentHandlerTests.cs">
-    <Files>
-      <File FileName="Tests/ArgumentHandlerTests.cs" Line="73" Column="62" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
         <State expanded="True">
@@ -12,10 +9,30 @@
               <Node name="Tests" expanded="True">
                 <Node name="Console" expanded="True">
                   <Node name="ArgumentHandlerTests" expanded="True">
-                    <Node name="ThrowsExceptionIfLessThanTwoPlayers" expanded="True" selected="True" />
+                    <Node name="ThrowsExceptionIfLessThanTwoPlayers" expanded="True" />
                   </Node>
                 </Node>
-                <Node name="Models" expanded="True" />
+                <Node name="Models" expanded="True">
+                  <Node name="CardGameFactoryTests" expanded="True">
+                    <Node name="ResolveWithNameOfGameReturnsCorrectGame" expanded="True" />
+                  </Node>
+                  <Node name="CardTests" expanded="True">
+                    <Node name="CreateAceOfSpacesFromString" expanded="True" />
+                    <Node name="InvalidStringShouldThrowException" expanded="True" />
+                  </Node>
+                  <Node name="DeckTests" expanded="True">
+                    <Node name="DealASpecificCard" expanded="True" />
+                  </Node>
+                  <Node name="PokerGameTests" expanded="True">
+                    <Node name="DetermineWinningHand" expanded="True" />
+                    <Node name="JaimeTests" expanded="True" />
+                    <Node name="TestKind" expanded="True" />
+                  </Node>
+                  <Node name="TexasHoldemGameTests" expanded="True" selected="True">
+                    <Node name="DetermineWinningHand" expanded="True" />
+                    <Node name="TestKind" expanded="True" />
+                  </Node>
+                </Node>
               </Node>
             </Node>
           </Node>
