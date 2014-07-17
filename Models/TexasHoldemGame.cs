@@ -64,7 +64,7 @@ namespace PokerHand.Models
             });
         }
 
-        public override IHand Deal(string selectedCards="")
+        public override IHand Deal(string selectedCards = "")
         {
             Setup();
 

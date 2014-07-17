@@ -20,7 +20,6 @@ namespace PokerHand.Tests.Models
 		public void ResolveWithUnknownNameThrowsArgumentException()
 		{
 			var factory = new CardGameFactory ();
-
 			Assert.Throws<ArgumentException> (() =>  factory.Resolve("Should not find a match"), "unknown card game type.");
 		}
 

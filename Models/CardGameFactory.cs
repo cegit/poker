@@ -4,7 +4,6 @@ namespace PokerHand.Models
 {
 	public class CardGameFactory: ICardGameFactory
 	{
-
 		public ICardGame Resolve(string name, Action<ICardGame> postSetup=null )
 		{
 			name = string.IsNullOrEmpty (name) ? "" : name.ToLower();

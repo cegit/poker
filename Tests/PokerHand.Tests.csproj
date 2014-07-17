@@ -38,6 +38,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Caramel.NDesk.Options">
+      <HintPath>..\packages\Caramel.NDesk.Options.1.0.0.60\lib\net40\Caramel.NDesk.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="NDesk.Options">
+      <HintPath>..\packages\NDesk.Options.0.2.1\lib\NDesk.Options.dll</HintPath>
+    </Reference>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ArgumentHandlerTests.cs" />
     <Compile Include="Models\CardGameFactoryTests.cs" />

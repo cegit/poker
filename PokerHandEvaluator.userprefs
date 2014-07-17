@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/Models/CardGameFactoryTests.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/ArgumentHandlerTests.cs">
     <Files>
-      <File FileName="Tests/ArgumentHandlerTests.cs" Line="16" Column="1" />
-      <File FileName="Tests/Models/PokerGameTests.cs" Line="48" Column="53" />
-      <File FileName="Tests/Models/CardGameFactoryTests.cs" Line="29" Column="44" />
-      <File FileName="Models/CardGameFactory.cs" Line="10" Column="42" />
+      <File FileName="Tests/ArgumentHandlerTests.cs" Line="73" Column="62" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.NUnit.TestPad">
@@ -13,11 +10,12 @@
           <Node name="PokerHand.Tests" expanded="True">
             <Node name="PokerHand" expanded="True">
               <Node name="Tests" expanded="True">
-                <Node name="Models" expanded="True">
-                  <Node name="CardGameFactoryTests" expanded="True">
-                    <Node name="ResolveWithNameOfGameReturnsCorrectGame" expanded="True" />
+                <Node name="Console" expanded="True">
+                  <Node name="ArgumentHandlerTests" expanded="True">
+                    <Node name="ThrowsExceptionIfLessThanTwoPlayers" expanded="True" selected="True" />
                   </Node>
                 </Node>
+                <Node name="Models" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -72,27 +72,17 @@
                 }
             };
 
-            try
-            {
-                p.Parse(args);
+            p.Parse(args);
 
-                if (showHelp)
-                    ShowHelp(p);
+            if (showHelp)
+                ShowHelp(p);
 
-                else if (printCards)
-                    PrintAllCards();
-                
-                else
-                {
-                    PlayGame(game, players.ToArray());
-                }
-            }
-            catch (OptionException e)
-            {
-                Console.Write("pokerhand: ");
-                Console.WriteLine(e.Message);
-                Console.WriteLine("Try `pokerhand --help' for more information.");
-            }
+            else if (printCards)
+                PrintAllCards();
+            
+            else
+                PlayGame(game, players.ToArray());
+            
         }
 
         private void PlayGame(ICardGame game, params string[] players)
