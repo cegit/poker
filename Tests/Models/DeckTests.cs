@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using PokerHand.Models;
 
+
 namespace PokerHand.Tests.Models
 {
     [TestFixture]
@@ -13,6 +14,18 @@ namespace PokerHand.Tests.Models
             var deck = new Deck();
             Assert.AreEqual(52, deck.Cards.Count);
         }
+
+		[Test]
+		[TestCase("AS", Face.Ace, Suit.Spade)]
+		[TestCase("kD", Face.King, Suit.Diamond)]
+		public void DealASpecificCard(string val, Face face, Suit suit)
+		{
+			var deck = new Deck ();
+			var card = deck.Deal (val).First ();
+
+			Assert.That(face, Is.EqualTo(card.Face));
+			Assert.That(suit, Is.EqualTo(card.Suit));
+		}
 
         [Test]
         public void DeckCanDealSelectedCards()

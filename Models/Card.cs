@@ -17,6 +17,7 @@ namespace PokerHand.Models
 
         public Card(string val)
         {
+			val = val.ToUpper();
             Suit = val.Last().ToSuit();
             val = val.Remove(val.Length - 1);
             Face = val.ToFace();
@@ -45,6 +46,7 @@ namespace PokerHand.Models
         {
             try
             {
+				other = other.ToUpper();
                 Suit = other.Last().ToSuit();
                 var val = other.Remove(other.Length - 1);
                 Face = val.ToFace();

@@ -9,12 +9,14 @@ namespace PokerHand.Tests.Models
     public class CardTests
     {
         [Test]
-        public void CreateAceOfSpacesFromString()
+		[TestCase("AS", Face.Ace, Suit.Spade)]
+		[TestCase("kD", Face.King, Suit.Diamond)]
+		public void CreateAceOfSpacesFromString(string val, Face face, Suit suit)
         {
-            var aceSpades = new Card("AS");
+            var card = new Card(val);
 
-            Assert.That(Face.Ace, Is.EqualTo(aceSpades.Face));
-            Assert.That(Suit.Spade, Is.EqualTo(aceSpades.Suit));
+			Assert.That(face, Is.EqualTo(card.Face));
+			Assert.That(suit, Is.EqualTo(card.Suit));
         }
 
         [Test]

@@ -79,6 +79,7 @@ namespace PokerHand.Tests.Models
         [TestCase(0, HandType.ThreeOfAKind, "3H, 3C, 3S,AH, JD", "AC, AD, KS, KC, 3D", "4H,5D,7C,JS,QH" )]
         [TestCase(2, HandType.Straight, "[3H, 2C, 3S, AH, JD]", "[AC, AD, KS, KC, 3D]", "4H, 5D, 6H, 7C, 8H")]
         [TestCase(1, HandType.StraightFlush, "[2H 3H 4H 5H QH]", "[2D 3D 4D 5D AD]", "2S 3S 4S 5S KS")]
+		[TestCase(1, HandType.HighCard,  "[2H 3D 5S 9C kD]", "[2C 3H 4s 8c Ah]")]
         public void DetermineWinningHand(int win, HandType winningHand, params string[] handVals)
         {
             //ASSIGN
