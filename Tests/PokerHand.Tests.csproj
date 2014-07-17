@@ -6,7 +6,7 @@
     <ProjectGuid>{11BD84FB-7072-4332-92BF-D3F9903D918E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PokerHand.Models.Tests</RootNamespace>
+    <RootNamespace>PokerHand.Tests</RootNamespace>
     <AssemblyName>PokerHand.Models.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -33,14 +33,18 @@
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardTests.cs" />
-    <Compile Include="DeckTests.cs" />
-    <Compile Include="PokerGameTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TexasHoldemGameTests.cs" />
     <Compile Include="ArgumentHandlerTests.cs" />
+    <Compile Include="Models\CardGameFactoryTests.cs" />
+    <Compile Include="Models\CardTests.cs" />
+    <Compile Include="Models\DeckTests.cs" />
+    <Compile Include="Models\TexasHoldemGameTests.cs" />
+    <Compile Include="Models\PokerGameTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\PokerHand.Models.csproj">
@@ -56,4 +60,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
 </Project>

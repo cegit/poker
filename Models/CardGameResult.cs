@@ -4,16 +4,9 @@ using System.Text;
 
 namespace PokerHand.Models
 {
-    public interface IGameResult
+    public class CardGameResult: IGameResult
     {
-        bool IsATie { get; }
-        IList<IHand> Winners { get; }
-        IHand Winner { get; }
-    }
-
-    public class GameResult: IGameResult
-    {
-        public GameResult(IList<IHand> winningHands)
+        public CardGameResult(IList<IHand> winningHands)
         {
             Winners = winningHands;
             IsATie = Winners.Count > 1;

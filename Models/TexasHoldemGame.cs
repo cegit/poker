@@ -8,15 +8,12 @@ namespace PokerHand.Models
     {
         private IList<Card> _communityCards; 
 
-        private readonly string _community;
-        public TexasHoldemGame(string commmunity) : this()
-        {
-            _community = commmunity;
-        }
         public TexasHoldemGame()
         {
             CardsInHand = 2;
         }
+
+		public string Community  { private get; set;}
 
         private readonly IList<Hand> _possibilities = new List<Hand>();
 
@@ -59,9 +56,9 @@ namespace PokerHand.Models
             _possibilities.Clear();
             base.Setup(() =>
             {
-                _communityCards = (string.IsNullOrEmpty(_community)
+                _communityCards = (string.IsNullOrEmpty(Community)
                     ? Deck.Deal(5)
-                    : Deck.Deal(_community))
+                    : Deck.Deal(Community))
                     .OrderByDescending(c => c.CardValue)
                     .ToList();
             });

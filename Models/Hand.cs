@@ -5,13 +5,6 @@ using System.Text;
 
 namespace PokerHand.Models
 {
-    public interface IHand: IComparable<IHand>
-    {
-        IList<Card> Cards { get; }
-        HandType Kind { get; set; }
-        string PlayerName { get; set; }
-    }
-
     public class Hand : IHand
     {
         public Hand(IEnumerable<Card> cards)

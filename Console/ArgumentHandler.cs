@@ -8,6 +8,12 @@
 
     public class ArgumentHandler
     {
+		private ICardGameFactory _factory;
+
+		public ArgumentHandler(ICardGameFactory factory){
+			_factory = factory;
+		}
+
         public void Handle(string[] args)
         {
             ICardGame game = null;
@@ -29,7 +35,7 @@
                     v =>
                     {
                         if (game != null) throw new OptionException("Game was already set.", "poker");
-                        game = new PokerGame();
+						game = _factory.Resolve("poker");
                     }
                 },
                 {
@@ -38,7 +44,7 @@
                     v =>
                     {
                         if (game != null) throw new OptionException("Game was already set.", "texas");
-                        handleCards = () => game = new TexasHoldemGame(cardsText);
+						handleCards = () => game = _factory.Resolve("texas", g => { ((TexasHoldemGame)g).Community = cardsText;});
                     }
                 },
                 {
@@ -94,7 +100,7 @@
             if (players.Count() < 2)
                 throw new OptionException("Not enough players specified.", "-p|player");
 
-            if (game == null) game = new PokerGame();
+			if (game == null) game = _factory.Resolve ("poker");
 
             Console.WriteLine();
             Console.WriteLine("--------------------------------------------");

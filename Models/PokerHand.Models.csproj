@@ -44,13 +44,17 @@
     <Compile Include="CardGame.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="EnumHelper.cs" />
-    <Compile Include="GameResult.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="PokerGame.cs" />
-    <Compile Include="ICardGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="TexasHoldemGame.cs" />
+    <Compile Include="Interfaces\ICardGame.cs" />
+    <Compile Include="Interfaces\IHand.cs" />
+    <Compile Include="Interfaces\ICardGameFactory.cs" />
+    <Compile Include="Interfaces\IGameResult.cs" />
+    <Compile Include="CardGameFactory.cs" />
+    <Compile Include="CardGameResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -60,4 +64,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
 </Project>

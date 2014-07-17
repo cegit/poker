@@ -5,7 +5,6 @@ using PokerHand.Models;
 
 namespace PokerHand.Tests.Models
 {
-
     [TestFixture]
     public class PokerGameTests
     {

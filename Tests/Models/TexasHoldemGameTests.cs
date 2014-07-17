@@ -15,7 +15,8 @@ namespace PokerHand.Tests.Models
         public void DetermineWinningHand(string community, int win, HandType winningHand, params string[] handVals)
         {
             //ASSIGN
-            var texas = new TexasHoldemGame(community);
+            var texas = new TexasHoldemGame();
+			texas.Community = community;
 
             //ACT
             var hands = handVals.Select(texas.Deal).ToList();
@@ -42,7 +43,8 @@ namespace PokerHand.Tests.Models
         public void TestKind(HandType kind, Face highCard, string community, string playerHand)
         {
             //ASSIGN
-            var texas = new TexasHoldemGame(community);
+            var texas = new TexasHoldemGame();
+			texas.Community = community;
 
             //ACT
             var hand = texas.Deal(playerHand);

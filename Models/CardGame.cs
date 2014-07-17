@@ -36,7 +36,7 @@ namespace PokerHand.Models
                 else
                     break;
             }
-            return new GameResult(winners);
+            return new CardGameResult(winners);
         }
     }
 }
