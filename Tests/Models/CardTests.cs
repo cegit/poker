@@ -15,8 +15,8 @@ namespace PokerHand.Tests.Models
         {
             var card = new Card(val);
 
-			Assert.That(face, Is.EqualTo(card.Face));
-			Assert.That(suit, Is.EqualTo(card.Suit));
+			Assert.That(card.Face, Is.EqualTo(face));
+			Assert.That(card.Suit, Is.EqualTo(suit));
         }
 
         [Test]

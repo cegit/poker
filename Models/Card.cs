@@ -17,11 +17,10 @@ namespace PokerHand.Models
 
         public Card(string val)
         {
-			val = val.ToUpper();
-            Suit = val.Last().ToSuit();
-            val = val.Remove(val.Length - 1);
-            Face = val.ToFace();
-            _equalityValue = (int)Face * (int)Suit;
+			_equalityValue = ParseString (val, (s, f) => {
+				Suit = s;
+				Face = f;
+			});
         }
 
         public Face Face { get; private set; }
@@ -37,6 +36,18 @@ namespace PokerHand.Models
             return string.Format("{0}{1}", Face.GetDescription(), Suit.GetDescription());
         }
         
+		private int ParseString(string val, Action<Suit,Face> postProcess=null)
+		{
+			val = val.ToUpper();
+			var suit = val.Last().ToSuit();
+			val = val.Remove(val.Length - 1);
+			var face = val.ToFace();
+
+			if (postProcess != null) postProcess (suit, face);
+
+			return ((int) face*(int) suit);
+		}
+
         #region Equals
         protected bool Equals(Card other)
         {
@@ -46,11 +57,7 @@ namespace PokerHand.Models
         {
             try
             {
-				other = other.ToUpper();
-                Suit = other.Last().ToSuit();
-                var val = other.Remove(other.Length - 1);
-                Face = val.ToFace();
-                return _equalityValue == ((int) Face*(int) Suit);
+				return _equalityValue == ParseString (other);
             }
             catch 
             {
