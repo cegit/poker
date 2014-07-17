@@ -9,6 +9,7 @@ In root folder run following command
 Example usages:
 
 1.
+
 	$ ./poker.sh -p[AD KD QD JD 10D] -p[4H 4C 3S 3D AS] -poker
 
 Will output:
@@ -22,6 +23,7 @@ Press any key...
 ```
 
 2.
+
 	$ ./poker.sh -texas:[AS KD 2H 5S 5C] -p:[3D 5H] -p:[KS JD] -p:[5D KH]
 
 Will output:
